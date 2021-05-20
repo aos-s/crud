@@ -14,23 +14,23 @@ class CreateCustomersTable extends Migration
     public function up()
     {
         Schema::create('customers', function (Blueprint $table) {
-            $table->bigInteger('id');
-            $table->string('last_name');
-            $table->string('first_name');
-            $table->string('last_kana');
-            $table->string('first_kana');
-            $table->integer('gender');
-            $table->dateTime('birthday');
-            $table->string('post_code');
-            $table->integer('pref_id');
-            $table->string('address');
-            $table->string('building');
-            $table->string('tel');
-            $table->string('mobile');
-            $table->string('email');
-            $table->text('remarks');
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->bigInteger('id')->comment('ID');
+            $table->string('last_name')->comment('姓');
+            $table->string('first_name')->comment('名');
+            $table->string('last_kana')->comment('姓かな');
+            $table->string('first_kana')->comment('名かな');
+            $table->integer('gender')->comment('性別');
+            $table->dateTime('birthday')->comment('生年月日');
+            $table->string('post_code')->comment('郵便番号');
+            $table->integer('pref_id')->comment('都道府県ID');
+            $table->string('address')->comment('住所');
+            $table->string('building')->comment('建物名');
+            $table->string('tel')->comment('電話番号');
+            $table->string('mobile')->comment('携帯番号');
+            $table->string('email')->comment('メールアドレス');
+            $table->text('remarks')->comment('備考');
+            $table->timestamp('created_at')->useCurrent()->comment('作成日時');
+            $table->timestamp('updated_at')->useCurrent()->comment('更新日時');
             $table->timestamps();
         });
     }
