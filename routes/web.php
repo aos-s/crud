@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('crud', 'CrudController@index');
+Route::get('crud/create', 'CrudController@create');
+
