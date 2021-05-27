@@ -14,24 +14,25 @@ class CreateCustomersTable extends Migration
     public function up()
     {
         Schema::create('customers', function (Blueprint $table) {
-            $table->bigInteger('id')->comment('ID');
-            $table->string('last_name')->comment('姓');
-            $table->string('first_name')->comment('名');
-            $table->string('last_kana')->comment('姓かな');
-            $table->string('first_kana')->comment('名かな');
-            $table->integer('gender')->comment('性別');
+            $table->bigInteger('id')->unsigned()->comment('ID');
+            $table->string('last_name',255)->comment('姓');
+            $table->string('first_name',255)->comment('名');
+            $table->string('last_kana',255)->comment('姓かな');
+            $table->string('first_kana',255)->comment('名かな');
+            $table->integer('gender')->unsigned()->comment('性別');
             $table->dateTime('birthday')->comment('生年月日');
-            $table->string('post_code')->comment('郵便番号');
-            $table->integer('pref_id')->comment('都道府県ID');
-            $table->string('address')->comment('住所');
-            $table->string('building')->comment('建物名');
-            $table->string('tel')->comment('電話番号');
-            $table->string('mobile')->comment('携帯番号');
-            $table->string('email')->comment('メールアドレス');
-            $table->text('remarks')->comment('備考');
+            $table->string('post_code',255)->comment('郵便番号');
+            $table->integer('pref_id')->unsigned()->comment('都道府県ID');
+            $table->string('address',255)->comment('住所');
+            $table->string('building',255)->nullable()->comment('建物名');
+            $table->string('tel',255)->comment('電話番号');
+            $table->string('mobile',255)->comment('携帯番号');
+            $table->string('email',255)->comment('メールアドレス');
+            $table->text('remarks')->nullable()->comment('備考');
             $table->timestamp('created_at')->useCurrent()->comment('作成日時');
             $table->timestamp('updated_at')->useCurrent()->comment('更新日時');
-            $table->timestamps();
+            $table->unique(['email'], 'customers_email_unique');
+            $table->foreign('pref_id')->references('id')->on('prefs');
         });
     }
 
