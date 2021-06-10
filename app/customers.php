@@ -4,7 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class customers extends Model
+class Customers extends Model
 {
-    protected $guarded = ['id','cretad_at','updated_at'];//
+    protected $guarded = ['id'];
+
+    protected $dates = ['birthday', 'created_at', 'updated_at'];
+
+    public function pref()
+    {
+        return $this->belongsTo('App\Prefs');
+    }
 }
