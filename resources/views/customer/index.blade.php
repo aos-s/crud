@@ -81,7 +81,7 @@
                             【メッセージサンプル】該当データが見つかりません。
                         </div>
                         <div class="form-group row">
-                            <a  class="btn btn-success" href="create.html" style="width:150px"><i class="fas fa-chalkboard-teacher pr-1"></i> 新規登録</a>
+                            <a  class="btn btn-success" href= {{route('create')}} style="width:150px"><i class="fas fa-chalkboard-teacher pr-1"></i> 新規登録</a>
                         </div>
                     </div>
 
@@ -223,7 +223,7 @@
                                     <td scope="col">bobtabo.buhibuhi@gmail.com</td>
                                     <td scope="col">2020/08/30　23：12：34</td>
                                     <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col"><a class="btn btn-info" href="edit.html">編集</a></td>
+                                    <td scope="col"><a class="btn btn-info" href="edit">編集</a></td>
                                 </tr>
                                 <tr>
                                     <td scope="col">1</td>
@@ -238,11 +238,11 @@
                                     <td scope="col">bobtabo.buhibuhi@gmail.com</td>
                                     <td scope="col">2020/08/30　23：12：34</td>
                                     <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col"><a class="btn btn-info" href="edit.html">編集</a></td>
+                                    <td scope="col"><a class="btn btn-info" href="edit">編集</a></td>
                                 </tr>
                                 <tr>
                                     <td scope="col">1</td>
-                                    <td scope="col"><a href="detail.html">苗字　名前</a></td>
+                                    <td scope="col"><a href="detail">苗字　名前</a></td>
                                     <td scope="col">みょうじ なまえ</td>
                                     <td scope="col">男</td>
                                     <td scope="col">1973/01/24</td>
@@ -253,7 +253,7 @@
                                     <td scope="col">bobtabo.buhibuhi@gmail.com</td>
                                     <td scope="col">2020/08/30　23：12：34</td>
                                     <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col"><a class="btn btn-info" href="edit.html">編集</a></td>
+                                    <td scope="col"><a class="btn btn-info" href="route('routeName')">編集</a></td>
                                 </tr>
                             </tbody>
                         </table>
