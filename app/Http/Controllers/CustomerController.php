@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Customer;
+use App\Pref;
 
 class CustomerController extends Controller
 {
@@ -37,13 +38,15 @@ class CustomerController extends Controller
             $query->where('first_kana', 'like', '%'.$search2.'%')->get();
         }
 
-        if ($request->has('') && $search3 != '') {
-            $query->where('', 'like', '%'.$search3.'%')->get();
+        if ($request->has('gender') && $search3 != '') {
+            $query->where('gender', 'search3') ->get();
         }
 
         if ($request->has('') && $search4 != '') {
             $query->where('', 'like', '%'.$search4.'%')->get();
         }
+
+        return view('', compact(''));
     }
 
 
@@ -52,7 +55,8 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return view('customer.create', compact('create'));
+        $prefs = Pref::all();
+        return view('customer.create', compact('prefs'));
     }
 
     /**
@@ -61,7 +65,9 @@ class CustomerController extends Controller
     public function edit(Request $request)
     {
         $id = $request->id;
-        return view('customer.edit', compact('edit'));
+        $customer = Customer::find($id);
+        $prefs = Pref::all();
+        return view('customer.edit', compact('customer', 'prefs'));
     }
 
     /**
@@ -69,7 +75,9 @@ class CustomerController extends Controller
      */
     public function detail(Request $request)
     {
-        return view('customer.detail', compact('detail'));
+        $id = $request->id;
+        $customer = Customer::find($id);
+        return view('customer.detail', compact('customer'));
     }
 
     /**
