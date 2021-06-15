@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Customers extends Model
+class Customer extends Model
 {
     protected $guarded = ['id'];
 
@@ -12,6 +12,6 @@ class Customers extends Model
 
     public function pref()
     {
-        return $this->belongsTo('App\Prefs');
+        return $this->belongsTo('App\Pref');
     }
 }

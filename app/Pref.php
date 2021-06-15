@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Prefs extends Model
+class Pref extends Model
 {
     protected $guarded = ['id'];
 
@@ -12,7 +12,7 @@ class Prefs extends Model
 
     public function customers()
     {
-        return $this->hasMany('App\Customers');
+        return $this->hasMany('App\Customer');
     }
 }
 

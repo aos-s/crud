@@ -17,7 +17,7 @@
         <header>
             <div class="navbar navbar-dark bg-dark shadow-sm">
                 <div class="container d-flex justify-content-between">
-                    <a href="index.html" class="navbar-brand d-flex align-items-center">
+                    <a href="index" class="navbar-brand d-flex align-items-center">
                         <strong>顧客管理（詳細）</strong>
                     </a>
                 </div>
@@ -121,7 +121,7 @@
                 </div>
                 <hr class="mb-4">
                 <div class="form-group">
-                    <a  class="btn btn-secondary" href="index.html" style="width:150px">戻る</a>
+                    <a  class="btn btn-secondary" href= "{{route('index')}}" style="width:150px">戻る</a>
                     <button id="complete" type="button" class="btn btn-danger" style="width:150px"><i class="fas fa-database pr-1"></i> 削除</button>
                 </div>
             </div>

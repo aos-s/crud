@@ -17,7 +17,7 @@
         <header>
             <div class="navbar navbar-dark bg-dark shadow-sm">
                 <div class="container d-flex justify-content-between">
-                    <a href="index.html" class="navbar-brand d-flex align-items-center">
+                    <a href="{{route('index')}}" class="navbar-brand d-flex align-items-center">
                         <strong>顧客管理</strong>
                     </a>
                 </div>
@@ -81,7 +81,7 @@
                             【メッセージサンプル】該当データが見つかりません。
                         </div>
                         <div class="form-group row">
-                            <a  class="btn btn-success" href= {{route('create')}} style="width:150px"><i class="fas fa-chalkboard-teacher pr-1"></i> 新規登録</a>
+                            <a  class="btn btn-success" href= "{{route('create')}}" style="width:150px"><i class="fas fa-chalkboard-teacher pr-1"></i> 新規登録</a>
                         </div>
                     </div>
 
@@ -105,9 +105,10 @@
                                 </tr>
                             </thead>
                             <tbody id="content">
+                                @foreach ($customers as $customer)
                                 <tr>
-                                    <td scope="col">1</td>
-                                    <td scope="col"><a href="detail.html">苗字　名前</a></td>
+                                    <td scope="col">{{ $customer->id }}</td>
+                                    <td scope="col"><a href="{{ route('detail', ['id' => $customer->id]) }}">苗字　名前</a></td>
                                     <td scope="col">みょうじ なまえ</td>
                                     <td scope="col">男</td>
                                     <td scope="col">1973/01/24</td>
@@ -118,143 +119,9 @@
                                     <td scope="col">bobtabo.buhibuhi@gmail.com</td>
                                     <td scope="col">2020/08/30　23：12：34</td>
                                     <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col"><a class="btn btn-info" href="edit.html">編集</a></td>
+                                    <td scope="col"><a class="btn btn-info" href="{{route('edit' , ['id' => 1])}}" >編集</a></td>
                                 </tr>
-                                <tr>
-                                    <td scope="col">1</td>
-                                    <td scope="col"><a href="detail.html">苗字　名前</a></td>
-                                    <td scope="col">みょうじ なまえ</td>
-                                    <td scope="col">男</td>
-                                    <td scope="col">1973/01/24</td>
-                                    <td scope="col">123-4567</td>
-                                    <td scope="col">青森県</td>
-                                    <td scope="col">03-1234-5678</td>
-                                    <td scope="col">080-1234-5678</td>
-                                    <td scope="col">bobtabo.buhibuhi@gmail.com</td>
-                                    <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col"><a class="btn btn-info" href="edit.html">編集</a></td>
-                                </tr>
-                                <tr>
-                                    <td scope="col">1</td>
-                                    <td scope="col"><a href="detail.html">苗字　名前</a></td>
-                                    <td scope="col">みょうじ なまえ</td>
-                                    <td scope="col">男</td>
-                                    <td scope="col">1973/01/24</td>
-                                    <td scope="col">123-4567</td>
-                                    <td scope="col">青森県</td>
-                                    <td scope="col">03-1234-5678</td>
-                                    <td scope="col">080-1234-5678</td>
-                                    <td scope="col">bobtabo.buhibuhi@gmail.com</td>
-                                    <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col"><a class="btn btn-info" href="edit.html">編集</a></td>
-                                </tr>
-                                <tr>
-                                    <td scope="col">1</td>
-                                    <td scope="col"><a href="detail.html">苗字　名前</a></td>
-                                    <td scope="col">みょうじ なまえ</td>
-                                    <td scope="col">男</td>
-                                    <td scope="col">1973/01/24</td>
-                                    <td scope="col">123-4567</td>
-                                    <td scope="col">青森県</td>
-                                    <td scope="col">03-1234-5678</td>
-                                    <td scope="col">080-1234-5678</td>
-                                    <td scope="col">bobtabo.buhibuhi@gmail.com</td>
-                                    <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col"><a class="btn btn-info" href="edit.html">編集</a></td>
-                                </tr>
-                                <tr>
-                                    <td scope="col">1</td>
-                                    <td scope="col"><a href="detail.html">苗字　名前</a></td>
-                                    <td scope="col">みょうじ なまえ</td>
-                                    <td scope="col">男</td>
-                                    <td scope="col">1973/01/24</td>
-                                    <td scope="col">123-4567</td>
-                                    <td scope="col">青森県</td>
-                                    <td scope="col">03-1234-5678</td>
-                                    <td scope="col">080-1234-5678</td>
-                                    <td scope="col">bobtabo.buhibuhi@gmail.com</td>
-                                    <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col"><a class="btn btn-info" href="edit.html">編集</a></td>
-                                </tr>
-                                <tr>
-                                    <td scope="col">1</td>
-                                    <td scope="col"><a href="detail.html">苗字　名前</a></td>
-                                    <td scope="col">みょうじ なまえ</td>
-                                    <td scope="col">男</td>
-                                    <td scope="col">1973/01/24</td>
-                                    <td scope="col">123-4567</td>
-                                    <td scope="col">青森県</td>
-                                    <td scope="col">03-1234-5678</td>
-                                    <td scope="col">080-1234-5678</td>
-                                    <td scope="col">bobtabo.buhibuhi@gmail.com</td>
-                                    <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col"><a class="btn btn-info" href="edit.html">編集</a></td>
-                                </tr>
-                                <tr>
-                                    <td scope="col">1</td>
-                                    <td scope="col"><a href="detail.html">苗字　名前</a></td>
-                                    <td scope="col">みょうじ なまえ</td>
-                                    <td scope="col">男</td>
-                                    <td scope="col">1973/01/24</td>
-                                    <td scope="col">123-4567</td>
-                                    <td scope="col">青森県</td>
-                                    <td scope="col">03-1234-5678</td>
-                                    <td scope="col">080-1234-5678</td>
-                                    <td scope="col">bobtabo.buhibuhi@gmail.com</td>
-                                    <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col"><a class="btn btn-info" href="edit.html">編集</a></td>
-                                </tr>
-                                <tr>
-                                    <td scope="col">1</td>
-                                    <td scope="col"><a href="detail.html">苗字　名前</a></td>
-                                    <td scope="col">みょうじ なまえ</td>
-                                    <td scope="col">男</td>
-                                    <td scope="col">1973/01/24</td>
-                                    <td scope="col">123-4567</td>
-                                    <td scope="col">青森県</td>
-                                    <td scope="col">03-1234-5678</td>
-                                    <td scope="col">080-1234-5678</td>
-                                    <td scope="col">bobtabo.buhibuhi@gmail.com</td>
-                                    <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col"><a class="btn btn-info" href="edit">編集</a></td>
-                                </tr>
-                                <tr>
-                                    <td scope="col">1</td>
-                                    <td scope="col"><a href="detail.html">苗字　名前</a></td>
-                                    <td scope="col">みょうじ なまえ</td>
-                                    <td scope="col">男</td>
-                                    <td scope="col">1973/01/24</td>
-                                    <td scope="col">123-4567</td>
-                                    <td scope="col">青森県</td>
-                                    <td scope="col">03-1234-5678</td>
-                                    <td scope="col">080-1234-5678</td>
-                                    <td scope="col">bobtabo.buhibuhi@gmail.com</td>
-                                    <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col"><a class="btn btn-info" href="edit">編集</a></td>
-                                </tr>
-                                <tr>
-                                    <td scope="col">1</td>
-                                    <td scope="col"><a href="detail">苗字　名前</a></td>
-                                    <td scope="col">みょうじ なまえ</td>
-                                    <td scope="col">男</td>
-                                    <td scope="col">1973/01/24</td>
-                                    <td scope="col">123-4567</td>
-                                    <td scope="col">青森県</td>
-                                    <td scope="col">03-1234-5678</td>
-                                    <td scope="col">080-1234-5678</td>
-                                    <td scope="col">bobtabo.buhibuhi@gmail.com</td>
-                                    <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col">2020/08/30　23：12：34</td>
-                                    <td scope="col"><a class="btn btn-info" href="route('routeName')">編集</a></td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
