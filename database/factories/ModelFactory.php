@@ -14,7 +14,7 @@ $factory->define(Customer::class, function (Faker $faker) {
         'gender' => rand(1, 2),
         'birthday' => $faker->date(),
         'post_code' => '123-4567',
-        'pref_id' => 1,
+        'pref_id' => rand(1, 47),
         'address' => $faker->address,
         'tel' => '03-1234-5678',
         'mobile' => '080-1234-5678',

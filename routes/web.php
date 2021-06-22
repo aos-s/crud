@@ -19,7 +19,7 @@ Route::get('/', function () {
 //初期表示
 Route::get('customer', 'CustomerController@index')->name('index');
 //検索
-Route::post('customer/find', 'CustomerController@find')->name('find');
+Route::post('customer', 'CustomerController@find')->name('find');
 //新規登録
 Route::get('customer/create', 'CustomerController@create')->name('create');
 //編集

@@ -17,7 +17,7 @@
         <header>
             <div class="navbar navbar-dark bg-dark shadow-sm">
                 <div class="container d-flex justify-content-between">
-                    <a href="{{route('edit')}}" class="navbar-brand d-flex align-items-center">
+                    <a href="index" class="navbar-brand d-flex align-items-center">
                         <strong>顧客管理（編集）</strong>
                     </a>
                 </div>
@@ -35,22 +35,22 @@
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="lastName">姓 <span class="badge badge-danger">必須</span></label>
-                                <input type="text" class="form-control" name="last_name" placeholder="姓" value="苗字" required>
+                                <input type="text" class="form-control" name="last_name" placeholder="姓" value="{{$customer->last_name}}" required>
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="firstName">名 <span class="badge badge-danger">必須</span></label>
-                                <input type="text" class="form-control" name="first_name" placeholder="名" value="名前" required>
+                                <input type="text" class="form-control" name="first_name" placeholder="名" value="{{$customer->first_name}}" required>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="lastKana">姓かな <span class="badge badge-danger">必須</span></label>
-                                <input type="text" class="form-control" name="last_kana" placeholder="姓かな" value="みょうじ" required>
+                                <input type="text" class="form-control" name="last_kana" placeholder="姓かな" value="{{$customer->last_kana}}" required>
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="firstKana">名かな <span class="badge badge-danger">必須</span></label>
-                                <input type="text" class="form-control" name="first_kana" placeholder="名かな" value="なまえ" required>
+                                <input type="text" class="form-control" name="first_kana" placeholder="名かな" value="{{$customer->first_kana}}" required>
                             </div>
                         </div>
 
@@ -73,14 +73,14 @@
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="birthday">生年月日 <span class="badge badge-danger">必須</span></label>
-                                <input type="date" class="form-control" name="birthday" placeholder="生年月日" value="1973-01-24" required>
+                                <input type="date" class="form-control" name="birthday" placeholder="生年月日" value="{{ $customer->birthday }}" required>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-2 mb-3">
                                 <label for="postCode">郵便番号 <span class="badge badge-danger">必須</span></label>
-                                <input type="text" class="form-control" name="post_code" placeholder="郵便番号" value="123-4567" required>
+                                <input type="text" class="form-control" name="post_code" placeholder="郵便番号" value="{{ $customer->post_code }}" required>
                             </div>
                         </div>
 
@@ -89,8 +89,9 @@
                                 <label for="prefId">都道府県 <span class="badge badge-danger">必須</span></label>
                                 <select class="custom-select d-block w-100" name="pref_id" required>
                                     <option value=""></option>
-                                    <option value="1">北海道</option>
-                                    <option value="2" selected>青森県</option>
+                                    @foreach ($prefs as $pref)
+                                    <option value="{{$pref->id}}">{{$pref->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -98,35 +99,35 @@
                         <div class="row">
                             <div class="col-md-5 mb-3">
                                 <label for="address">住所 <span class="badge badge-danger">必須</span></label>
-                                <input type="text" class="form-control" name="address" placeholder="渋谷区道玄坂2丁目11-1" value="青森市長島一丁目1-1" required>
+                                <input type="text" class="form-control" name="address" placeholder="渋谷区道玄坂2丁目11-1" value="{{ $customer->address }}" required>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-5 mb-3">
                                 <label for="building">建物名</label>
-                                <input type="text" class="form-control" name="building" placeholder="Ｇスクエア渋谷道玄坂 4F" value="">
+                                <input type="text" class="form-control" name="building" placeholder="Ｇスクエア渋谷道玄坂 4F" value="{{ $customer->building }}">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="tel">電話番号 <span class="badge badge-danger">必須</span></label>
-                                <input type="tel" class="form-control" name="tel" placeholder="03-1234-5678" value="03-1234-5678" required>
+                                <input type="tel" class="form-control" name="tel" placeholder="03-1234-5678" value="{{ $customer->tel }}" required>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="mobile">携帯番号 <span class="badge badge-danger">必須</span></label>
-                                <input type="tel" class="form-control" name="mobile" placeholder="080-1234-5678" value="080-1234-5678" required>
+                                <input type="tel" class="form-control" name="mobile" placeholder="080-1234-5678" value="{{ $customer->mobile }}" required>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="email">メールアドレス <span class="badge badge-danger">必須</span></label>
-                                <input type="email" class="form-control" name="email" placeholder="you@example.com" value="bobtabo.buhibuhi@gmail.com" required>
+                                <input type="email" class="form-control" name="email" placeholder="you@example.com" value="{{ $customer->email }}" required>
                             </div>
                         </div>
 

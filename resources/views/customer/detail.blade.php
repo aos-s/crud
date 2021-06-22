@@ -94,7 +94,7 @@
                     <div class="row">
                         <div class="col-md-3 mb-3">
                             <label for="tel">電話番号</label>
-                            <input type="tel" class="form-control" name="tel" placeholder="03-1234-5678" value="{{ $customer->tel }}8" readonly>
+                            <input type="tel" class="form-control" name="tel" placeholder="03-1234-5678" value="{{ $customer->tel }}" readonly>
                         </div>
                     </div>
 

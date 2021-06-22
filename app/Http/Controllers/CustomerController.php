@@ -13,8 +13,16 @@ class CustomerController extends Controller
      */
     public function index() {
         $customers = Customer::all();
+        $prefs = Pref::all();
+        $input = [
+            'last_kana' => '',
+            'first_kana' => '',
+            'gender1' => '',
+            'gender2' => '',
+            'pref_id' => '',
+        ];
 
-        return view('customer.index', compact('customers'));
+        return view('customer.index', compact('customers', 'prefs', 'input'));
     }
 
     /**
@@ -22,31 +30,38 @@ class CustomerController extends Controller
      */
     public function find(Request $request)
     {
+        $input = $request->input();
+        // dd($input);
         $query = Customer::query();
-        //検索条件
-        $search1 = $request->input('last_kana');
-        $search2 = $request->input('first_kana');
-        $search3 = $request->input('gender');
-        $search4 = $request->input('pref_id');
 
         //データの取得
-        if ($request->has('last_kana') && $search1 != '') {
-            $query->where('last_kana', 'like', '%'.$search1.'%')->get();
+        if (!empty($input['last_kana'])){
+            $query->where('last_kana', 'like', '%'.$input['last_kana'].'%');
+        }
+        if (!empty($input['first_kana'])){
+            $query->where('first_kana', 'like', '%'.$input['first_kana'].'%');
+        }
+        if (!empty($input['gender1']) || !empty($input['gender2'])){
+            $gender = [];
+            if(!empty($input['gender1'])){
+                $gender[] = $input['gender1'];
+            }
+            if(!empty($input['gender2'])){
+                $gender[] = $input['gender2'];
+            }
+            $query->whereIn('gender', $gender);
         }
 
-        if ($request->has('first_kana') && $search2 != '') {
-            $query->where('first_kana', 'like', '%'.$search2.'%')->get();
+        if (!empty($input['pref_id'])){
+            $query->where('pref_id', '=' , $input['pref_id']);
         }
 
-        if ($request->has('gender') && $search3 != '') {
-            $query->where('gender', 'search3') ->get();
-        }
 
-        if ($request->has('') && $search4 != '') {
-            $query->where('', 'like', '%'.$search4.'%')->get();
-        }
 
-        return view('', compact(''));
+        $customers = $query->get();
+        $prefs = Pref::all();
+
+        return view('customer.index', compact('customers', 'prefs', 'input'));
     }
 
 

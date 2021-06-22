@@ -49,6 +49,7 @@ class PrefsTableSeeder extends Seeder
             ['id' => 30, 'name' => '和歌山県'],
             ['id' => 31, 'name' => '鳥取県'],
             ['id' => 32, 'name' => '島根県'],
+            ['id' => 33, 'name' => '岡山県'],
             ['id' => 34, 'name' => '広島県'],
             ['id' => 35, 'name' => '山口県'],
             ['id' => 36, 'name' => '徳島県'],

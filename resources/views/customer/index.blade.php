@@ -32,19 +32,20 @@
                     </div>
 
                     <div style="margin-bottom:20px;">
-                        <form id="form" method="post" action="index.html">
+                        <form id="form" method="post" action="{{route('find')}}">
+                            @csrf
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group row">
                                         <label for="lastKana" class="col-sm-2 col-form-label">姓かな</label>
                                         <div class="col-sm-6">
-                                            <input type="text" class="form-control" name="last_kana" placeholder="姓かな">
+                                            <input type="text" class="form-control" name="last_kana" placeholder="姓かな" value="{{$input['last_kana']}}" >
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="firstKana" class="col-sm-2 col-form-label">名かな</label>
                                         <div class="col-sm-6">
-                                            <input type="text" class="form-control" name="first_kana" placeholder="名かな">
+                                            <input type="text" class="form-control" name="first_kana" placeholder="名かな" value="{{$input['last_kana']}}">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -55,7 +56,7 @@
                                                 <label class="form-check-label" for="inlineCheckbox1">男</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="gender2" value="2">
+                                                <input class="form-check-input" type="checkbox" name="gender2" value="2" checked>
                                                 <label class="form-check-label" for="inlineCheckbox2">女</label>
                                             </div>
                                         </div>
@@ -65,8 +66,9 @@
                                         <div class="col-sm-3">
                                             <select class="custom-select d-block" name="pref_id">
                                                 <option value=""></option>
-                                                <option value="1">北海道</option>
-                                                <option value="2">青森県</option>
+                                                @foreach ($prefs as $pref)
+                                                <option value="{{$pref->id}}" selected>{{$pref->name}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -119,7 +121,7 @@
                                     <td scope="col">{{ $customer->email }}</td>
                                     <td scope="col">{{ $customer->created_at }}</td>
                                     <td scope="col">{{ $customer->updated_at }}</td>
-                                    <td scope="col"><a class="btn btn-info" href="{{route('edit' , ['id' => 1])}}" >編集</a></td>
+                                    <td scope="col"><a class="btn btn-info" href="{{route('edit' , ['id' => $customer->id])}}" >編集</a></td>
                                 </tr>
                                 @endforeach
                             </tbody>
