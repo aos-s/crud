@@ -52,11 +52,11 @@
                                         <label for="firstName" class="col-sm-2 col-form-label">性別</label>
                                         <div class="col-sm-10 text-left">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="gender1" value="1">
+                                                <input class="form-check-input" type="checkbox" name="gender1" value="1" {{ !empty($input['gender1']) ? "checked" : "" }}>
                                                 <label class="form-check-label" for="inlineCheckbox1">男</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="gender2" value="2" checked>
+                                                <input class="form-check-input" type="checkbox" name="gender2" value="2" {{ !empty($input['gender2']) ? "checked" : ""}}>
                                                 <label class="form-check-label" for="inlineCheckbox2">女</label>
                                             </div>
                                         </div>
