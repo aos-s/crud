@@ -59,7 +59,7 @@
                     <div class="row">
                         <div class="col-md-3 mb-3">
                             <label for="birthday">生年月日</label>
-                            <input type="date" class="form-control" name="birthday" placeholder="生年月日" value="{{ $customer->birthday }}" readonly>
+                            <input type="date" class="form-control" name="birthday" placeholder="生年月日" value="{{ $customer->birthday->format('Y-m-d') }}" readonly>
                         </div>
                     </div>
 
@@ -135,7 +135,7 @@
             $("#complete").click(function() {
                 completeConfirm(function(result){
                     if (result) {
-                        location.replace("index.html");
+                        location.replace("{{route('delete' , ['id' => $customer->id])}}");
                     }
                 });
             });

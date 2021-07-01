@@ -30,7 +30,9 @@
                     【メッセージサンプル】エラーです。
                 </div>
 
-                <form id="form" method="post" action="index.html">
+                <form id="form" method="post" action="{{route('update')}}">
+                    @csrf
+                    <input type="hidden" name="id" value="{{ $customer->id }}" />
                     <div class="col-md-8 order-md-1">
                         <div class="row">
                             <div class="col-md-3 mb-3">
@@ -73,7 +75,7 @@
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="birthday">生年月日 <span class="badge badge-danger">必須</span></label>
-                                <input type="date" class="form-control" name="birthday" placeholder="生年月日" value="{{ $customer->birthday }}" required>
+                                <input type="date" class="form-control" name="birthday" placeholder="生年月日" value="{{ $customer->birthday->format('Y-m-d') }}" required>
                             </div>
                         </div>
 
@@ -84,13 +86,13 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row"></div>
                             <div class="col-md-2 mb-3">
                                 <label for="prefId">都道府県 <span class="badge badge-danger">必須</span></label>
                                 <select class="custom-select d-block w-100" name="pref_id" required>
                                     <option value=""></option>
                                     @foreach ($prefs as $pref)
-                                    <option value="{{$pref->id}}">{{$pref->name}}</option>
+                                    <option value="{{$pref->id}}">{{ $pref->id === ($customer['pref_id']) ? "selected" : ""}}>{{$pref->name}}</option>
                                     @endforeach
                                 </select>
                             </div>

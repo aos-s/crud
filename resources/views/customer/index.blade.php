@@ -56,7 +56,7 @@
                                                 <label class="form-check-label" for="inlineCheckbox1">男</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" name="gender2" value="2" {{ !empty($input['gender2']) ? "checked" : ""}}>
+                                                <input class="form-check-input" type="checkbox" name="gender2" value="2" {{ !empty($input['gender2']) ? "checked" : "" }}>
                                                 <label class="form-check-label" for="inlineCheckbox2">女</label>
                                             </div>
                                         </div>
@@ -67,7 +67,7 @@
                                             <select class="custom-select d-block" name="pref_id">
                                                 <option value=""></option>
                                                 @foreach ($prefs as $pref)
-                                                <option value="{{$pref->id}}" selected>{{$pref->name}}</option>
+                                                <option value="{{$pref->id}}" {{ $pref->id === $input['pref_id'] ? "selected" : ""}}>{{$pref->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -113,7 +113,7 @@
                                     <td scope="col"><a href="{{ route('detail', ['id' => $customer->id]) }}">{{ $customer->last_name }} {{ $customer->first_name }}</a></td>
                                     <td scope="col">{{ $customer->last_kana }} {{ $customer->first_kana }}</td>
                                     <td scope="col">{{ $customer->gender === 1 ? '男' : '女' }}</td>
-                                    <td scope="col">{{ $customer->birthday }}</td>
+                                    <td scope="col">{{ $customer->birthday->format('Y/m/d') }}</td>
                                     <td scope="col">{{ $customer->post_code }}</td>
                                     <td scope="col">{{ $customer->pref->name }}</td>
                                     <td scope="col">{{ $customer->tel }}</td>

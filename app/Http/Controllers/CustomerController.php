@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Customer;
 use App\Pref;
+use DB;
 
 class CustomerController extends Controller
 {
@@ -34,7 +35,7 @@ class CustomerController extends Controller
         // dd($input);
         $query = Customer::query();
 
-        //データの取得
+
         if (!empty($input['last_kana'])){
             $query->where('last_kana', 'like', '%'.$input['last_kana'].'%');
         }
@@ -100,6 +101,14 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
+        $input = $request->input();
+        unset($input['_token']);
+
+        DB::transaction(function () use ($input) {
+            $customer = new Customer();
+            $customer->fill($input)->save();
+        });
+
         return redirect()->route('index');
     }
 
@@ -108,6 +117,13 @@ class CustomerController extends Controller
      */
     public function update(Request $request)
     {
+        $input = $request->input();
+        unset($input['_token']);
+
+        DB::transaction(function () use ($input) {
+            $customer = Customer::find($input['id']);
+            $customer->fill($input)->save();
+        });
         return redirect()->route('index');
     }
 
@@ -116,6 +132,13 @@ class CustomerController extends Controller
      */
     public function delete(Request $request)
     {
+        $id = $request->id;
+
+        DB::transaction(function () use ($id) {
+            $customer = Customer::find($id);
+            $customer->delete();
+        });
+
         return redirect()->route('index');
     }
 }
