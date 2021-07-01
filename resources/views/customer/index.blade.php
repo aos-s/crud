@@ -67,7 +67,7 @@
                                             <select class="custom-select d-block" name="pref_id">
                                                 <option value=""></option>
                                                 @foreach ($prefs as $pref)
-                                                <option value="{{$pref->id}}" {{ $pref->id === $input['pref_id'] ? "selected" : ""}}>{{$pref->name}}</option>
+                                                <option value="{{$pref->id}}" {{ $pref->id == $input['pref_id'] ? "selected" : ""}}>{{$pref->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

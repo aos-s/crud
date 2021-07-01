@@ -92,7 +92,7 @@
                                 <select class="custom-select d-block w-100" name="pref_id" required>
                                     <option value=""></option>
                                     @foreach ($prefs as $pref)
-                                    <option value="{{$pref->id}}">{{ $pref->id === ($customer['pref_id']) ? "selected" : ""}}>{{$pref->name}}</option>
+                                    <option value="{{$pref->id}}"{{ $pref->id == ($customer['pref_id']) ? "selected" : ""}}>{{ $pref->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
