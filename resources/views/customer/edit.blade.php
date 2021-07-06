@@ -26,9 +26,13 @@
 
         <main role="main">
             <div class="container-fluid" style="margin-top: 50px; padding-left: 100px;padding-right: 100px;">
+                @if ($errors->any())
                 <div class="alert alert-danger" role="alert">
-                    【メッセージサンプル】エラーです。
+                    @foreach ($errors->all() as $error)
+                        {{ $error }}<br/>
+                    @endforeach
                 </div>
+                @endif
 
                 <form id="form" method="post" action="{{route('update')}}">
                     @csrf
@@ -37,7 +41,7 @@
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="lastName">姓 <span class="badge badge-danger">必須</span></label>
-                                <input type="text" class="form-control" name="last_name" placeholder="姓" value="{{$customer->last_name}}" required>
+                                <input type="text" class="form-control" name="last_name" placeholder="姓" value="{{ old('last_name', $customer->last_name) }}" required>
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="firstName">名 <span class="badge badge-danger">必須</span></label>

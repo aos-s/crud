@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Customer;
 use App\Pref;
 use DB;
+use App\Http\Requests\CustomerFindRequest;
+use App\Http\Requests\CustomerStoreRequest;
+use App\Http\Requests\CustomerUpdateRequest;
 
 class CustomerController extends Controller
 {
@@ -29,7 +32,7 @@ class CustomerController extends Controller
     /**
      * 検索
      */
-    public function find(Request $request)
+    public function find(CustomerFindRequest $request)
     {
         $input = $request->input();
         // dd($input);
@@ -99,7 +102,7 @@ class CustomerController extends Controller
     /**
      * 登録
      */
-    public function store(Request $request)
+    public function store(CustomerStoreRequest $request)
     {
         $input = $request->input();
         unset($input['_token']);
@@ -115,7 +118,7 @@ class CustomerController extends Controller
     /**
      * 更新
      */
-    public function update(Request $request)
+    public function update(CustomerUpdateRequest $request)
     {
         $input = $request->input();
         unset($input['_token']);
